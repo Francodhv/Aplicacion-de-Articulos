@@ -110,11 +110,20 @@ namespace WindowsFormsApp_Final
             try
             {
                 Articulo seleccionado;
-                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
 
-                frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
-                modificar.ShowDialog();
-                cargar();
+                if (dgvArticulos.CurrentRow != null)
+                {
+                    seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                    frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+                    modificar.ShowDialog();
+                    cargar();
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar el articulo que desea modificar");
+                }
+                   
             }
             catch (Exception ex)
             {
